@@ -4,7 +4,8 @@
   "type": "module",
   "scripts": {
     "dev": "bun index.ts",
-    "build": "bun build ./src/index.ts --outfile=./dist/bundle.js"
+    "build": "bun build ./src/index.ts --outfile=./dist/bundle.js",
+    "test": "vitest"
   },
   "devDependencies": {
     "@types/bun": "latest",
