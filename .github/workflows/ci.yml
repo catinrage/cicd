@@ -9,41 +9,15 @@ on:
       - main
 
 jobs:
-  test:
+  ssh:
+    name: ssh
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - name: Install dependencies
-        run: bun install
-
-      - name: Run tests
-        run: bun run test
-
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
-
-      - name: Install dependencies
-        run: bun install --production
-
-      - name: Build to javascript
-        run: bun run build
-
-      - name: Deploy
-        run: |
-          echo "Deploying to production..."
-          # Add your deployment script here
+    - name: executing remote ssh commands using password
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: 194.60.231.51
+        username: root
+        password: cyca9615
+        port: 9011
+        script: whoami
